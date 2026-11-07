@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>     
+    <link rel="stylesheet" href="style.css"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>  
+    <div class=“progress”></div>
+      <nav class="nav">
+                <a href="#hero">Home</a>
+                <a href="#about">About</a>
+                <a href="#contact">Contact</a>
+               </nav>
+    <div class ="blob blob1"></div>
+    <div class ="blob blob2"></div>
+    <section class="hero" id ="Home">
+       <div class="profile">
+           <img src="photo_1.jpg" alt="mohmmad" class="avatar">
+           <div claas="info">
+     <h1>Mohmmad Amad AlZaidanin</h1>
+       <p>Software Engineering Student </p>
+       <a href="#contact" class="btn">Contact Me</a>
+       </div>
+       </div>
+    </section>
+     <section class="hero"id ="about">
+            <h2>About Me</h2>
+            <p>Hi, I'm Mohammad Amad AlZaidanin, a passionate Software Engineering  student dedicated to creating innovative solutions through coding. I thrive on challenges and continuously seek opportunities to enhance my skills in software development. With a strong foundation in programming languages and a keen eye for detail, I am committed to delivering high-quality software that meets user needs. My goal is to contribute to impactful projects and collaborate with like-minded individuals in the tech community.</p>
+            <details class="skills">
+                <summary>My Skills</summary>
+               <ul>
+                    <li>C++ OOP</li>
+                    <li>Java</li>
+                    <li>Data Structures</li>
+                    <li>Software Modeling</li>
+                    <li>Digital Logic Design</li>
+                    <li>Database</li>
+                    <li>C#</li>
+                    <li>Web Programming (HTML / CSS / JavaScript)</li>
+                    <li>Algorithm Analysis</li>
+                </ul>
+                
+            </details>
+        </section>
+        <section class="hero"id ="contact">
+            <h2>Contact</h2>
+            <p>Feel free to reach out to me!</p>
+           
+    
+                <div class = "buttons">
+                    <div class="buttons">
+  <a href="mailto:mealzaidanin24@cit.just.edu.jo" class="btn"><i class="fa-solid fa-envelope"></i> Email Me</a>
+  <a href="https://github.com/mealzaidanin24" class="btn" target="_blank"><i class="fa-brands fa-github"></i> GitHub</a>
+  <a href="https://t.me/mohmmadalzaidanin" class="btn" target="_blank"><i class="fa-brands fa-telegram"></i> Telegram</a>
+</div>
+                </div>
+               </section>
+          <script>
+  const items = document.querySelectorAll('.reveal');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('show');
+      }
+    });
+  }, { threshold: 0.2 });
+
+  items.forEach((el) => observer.observe(el));
+
+  const bar = document.querySelector('.progress');
+  window.addEventListener('scroll', () => {
+    const max = document.documentElement.scrollHeight - window.innerHeight;
+    bar.style.width = (window.scrollY / max) * 100 + '%';
+  });
+</script>   
+</body>
+</html>
