@@ -269,3 +269,16 @@ body.dark .to-top{
 .to-top:hover{
     transform: translateY(-3px);
 }
+@media (max-width: 600px){
+    body{
+        padding: 90px 16px 24px;
+        grid-template-columns: minmax(0, 1fr);
+    }
+    .hero{
+        padding: 24px;
+    }
+    .profile{
+        flex-direction: column;
+        text-align: center;
+    }
+}
