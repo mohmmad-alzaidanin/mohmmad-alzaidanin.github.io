@@ -116,7 +116,8 @@ html{
     border: 3px solid rgba(255,255,255,0.6);
     box-shadow: 0 8px 28px rgba(0,0,0,0.25);
 }
-.skills summary{
+.skills summary
+.about-box summary{
     display: inline-block;
     cursor: pointer;
     list-style: none;
@@ -127,8 +128,8 @@ html{
     border: 1px solid rgba(255,255,255,0.5);
     backdrop-filter: blur(10px);
 }
-.skills summary::-webkit-details-marker {
-    display: none;
+.about-[pen]p{
+    animation: reveal 0.5s ease;
 }
 .skills ul{
 display: flex;
@@ -183,4 +184,88 @@ display: flex;
 
 .btn:hover i {
   color: #d4a017;
+}
+.about-box[open] p{
+    animation: reveal 0.5s ease;
+}
+.project{
+    padding: 20px;
+    margin-top: 16px;
+    border-radius: 18px;
+    background: rgba(255,255,255,0.2);
+    border: 1px solid rgba(255,255,255,0.4);
+}
+.project h3{
+    margin: 0 0 8px;
+}
+.project p{
+    margin: 0 0 12px;
+}
+.tags{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+.tags span{
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 14px;
+    background: rgba(255,255,255,0.25);
+    border: 1px solid rgba(255,255,255,0.5);
+}
+
+.cursor{
+    animation: blink 0.8s infinite;
+}
+@keyframes blink{
+    50%{ opacity: 0; }
+}
+
+
+.theme-btn{
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 6px 10px;
+    border-radius: 999px;
+    background: transparent;
+}
+.theme-btn:hover{
+    background: rgba(255,255,255,0.5);
+}
+body.dark{
+    background: linear-gradient(135deg,#1b1b24,#2c3e50,#1f2a30);
+    color: #f0f0f0;
+}
+body.dark .btn,
+body.dark .nav a,
+body.dark .to-top{
+    color: #f0f0f0;
+}
+
+
+.to-top{
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.5);
+    background: rgba(255,255,255,0.25);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    z-index: 10;
+}
+.to-top.show{
+    opacity: 1;
+    pointer-events: auto;
+}
+.to-top:hover{
+    transform: translateY(-3px);
 }

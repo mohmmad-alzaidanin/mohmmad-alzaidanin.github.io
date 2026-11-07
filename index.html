@@ -8,52 +8,75 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>  
-    <div class=“progress”></div>
+    <div class="progress"></div>
       <nav class="nav">
                 <a href="#hero">Home</a>
                 <a href="#about">About</a>
                 <a href="#contact">Contact</a>
+                <a href="#project">Project</a>
+                <button id="themeBtn" class="theme-btn">🌙</button>
                </nav>
     <div class ="blob blob1"></div>
     <div class ="blob blob2"></div>
+    <button class=“to-top” id=“toTop”></button>
     <section class="hero" id ="Home">
        <div class="profile">
            <img src="photo_1.jpg" alt="mohmmad" class="avatar">
            <div claas="info">
      <h1>Mohmmad Amad AlZaidanin</h1>
-       <p>Software Engineering Student </p>
-       <a href="#contact" class="btn">Contact Me</a>
+       <p><span id="typing"></span><span class="cursor"></span></p>
+      <a href="#contact" class="btn">Contact Me</a>
+      
        </div>
        </div>
     </section>
-     <section class="hero"id ="about">
-            <h2>About Me</h2>
-            <p>Hi, I'm Mohammad Amad AlZaidanin, a passionate Software Engineering  student dedicated to creating innovative solutions through coding. I thrive on challenges and continuously seek opportunities to enhance my skills in software development. With a strong foundation in programming languages and a keen eye for detail, I am committed to delivering high-quality software that meets user needs. My goal is to contribute to impactful projects and collaborate with like-minded individuals in the tech community.</p>
-            <details class="skills">
-                <summary>My Skills</summary>
-               <ul>
-                    <li>C++ OOP</li>
-                    <li>Java</li>
-                    <li>Data Structures</li>
-                    <li>Software Modeling</li>
-                    <li>Digital Logic Design</li>
-                    <li>Database</li>
-                    <li>C#</li>
-                    <li>Web Programming (HTML / CSS / JavaScript)</li>
-                    <li>Algorithm Analysis</li>
-                </ul>
-                
-            </details>
-        </section>
+    <section class="hero reveal" id="about">
+    <details class="about-box">
+        <summary>About Me</summary>
+        <p>I'm a Software Engineering student who enjoys building real-world applications and understanding how software works under the hood. I work with Java, C#, C++ and JavaScript, and I've built web projects using HTML, CSS and Firebase. I'm looking to keep growing and contribute to impactful projects.</p>
+    </details>
+
+    <details class="skills">
+        <summary>My Skills</summary>
+        <ul>
+            <li>C++ OOP</li>
+            <li>Java</li>
+            <li>Data Structures</li>
+            <li>Software Modeling</li>
+            <li>Digital Logic Design</li>
+            <li>Database</li>
+            <li>C#</li>
+            <li>Web Programming (HTML / CSS / JavaScript)</li>
+            <li>Algorithm Analysis</li>
+        </ul>
+    </details>
+</section>
+<section class="hero reveal" id="projects">
+    <h2>Projects</h2>
+
+    <div class="project">
+        <h3>Personal Portfolio Website</h3>
+        <p>A portfolio page with a glassmorphism design, scroll animations and collapsible sections. Hand-written with HTML, CSS and JavaScript and hosted on GitHub Pages.</p>
+        <div class="tags">
+            <span>HTML</span>
+            <span>CSS</span>
+            <span>JavaScript</span>
+        </div>
+        <div class="buttons">
+            <a href="https://github.com/miohmmadalzaidanin6/miohmmadalzaidanin6.github.io" class="btn" target="_blank"><i class="fa-brands fa-github"></i> GitHub</a>
+            <a href="https://miohmmadalzaidanin6.github.io" class="btn" target="_blank"><i class="fa-solid fa-globe"></i> Live Demo</a>
+        </div>
+    </div>
+</section>
         <section class="hero"id ="contact">
             <h2>Contact</h2>
             <p>Feel free to reach out to me!</p>
-           
+          
     
                 <div class = "buttons">
                     <div class="buttons">
   <a href="mailto:mealzaidanin24@cit.just.edu.jo" class="btn"><i class="fa-solid fa-envelope"></i> Email Me</a>
-  <a href="https://github.com/mealzaidanin24" class="btn" target="_blank"><i class="fa-brands fa-github"></i> GitHub</a>
+  <a href=" https://miohmmadalzaidanin6.github.io" class="btn" target="_blank"><i class="fa-brands fa-github"></i> GitHub</a>
   <a href="https://t.me/mohmmadalzaidanin" class="btn" target="_blank"><i class="fa-brands fa-telegram"></i> Telegram</a>
 </div>
                 </div>
@@ -76,6 +99,42 @@
     const max = document.documentElement.scrollHeight - window.innerHeight;
     bar.style.width = (window.scrollY / max) * 100 + '%';
   });
+  
+const words = ["Software Engineering Student", "Web Developer", "Problem Solver"];
+const typingEl = document.getElementById("typing");
+let w = 0, c = 0, deleting = false;
+
+function type() {
+  const word = words[w];
+  typingEl.textContent = word.slice(0, c);
+  if (!deleting && c < word.length) { c++; setTimeout(type, 100); }
+  else if (!deleting) { deleting = true; setTimeout(type, 1500); }
+  else if (c > 0) { c--; setTimeout(type, 50); }
+  else { deleting = false; w = (w + 1) % words.length; setTimeout(type, 300); }
+}
+type();
+
+
+const themeBtn = document.getElementById("themeBtn");
+if (localStorage.getItem("theme") === "dark") {
+  document.body.classList.add("dark");
+  themeBtn.textContent = "☀️";
+}
+themeBtn.addEventListener("click", () => {
+  document.body.classList.toggle("dark");
+  const isDark = document.body.classList.contains("dark");
+  themeBtn.textContent = isDark ? "☀️" : "🌙";
+  localStorage.setItem("theme", isDark ? "dark" : "light");
+});
+
+
+const toTop = document.getElementById("toTop");
+window.addEventListener("scroll", () => {
+  toTop.classList.toggle("show", window.scrollY > 300);
+});
+toTop.addEventListener("click", () => {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+});
 </script>   
 </body>
 </html>
